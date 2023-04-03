@@ -1,0 +1,43 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: add sshd config
+      copy: src=etc_ssh_sshd_config dest=/etc/ssh/sshd_config
+      notify:
+        - reload sshd
+
+    - name: add user
+      user: name=steve groups=www-data shell=/bin/bash
+
+    - name: add public key
+      authorized_key: user=steve key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+    - name: add to sudoers
+      lineinfile: "dest=/etc/sudoers regexp='^steve' line='steve	ALL=(ALL) NOPASSWD: ALL' state=present"
+
+    - name: install tmux
+      apt: pkg=tmux state=present
+
+    - name: add tmux configuration
+      copy: src=.tmux.conf dest=/home/steve/.tmux.conf
+
+    - name: add binaries
+      copy: src={{ item }} dest=/home/steve/{{ item | basename }} owner=steve mode='0700'
+      loop:
+        - ../carry/carry
+        - ../carry/positions
+        - ../carry/addresses
+        - ../carry/buy
+        - ../carry/sell
+        - ../fees/fees
+        - ../premia/premia
+        - ../swaps/swaps
+
+    - name: add .env
+      copy: src=../carry/.env dest=/home/steve/.env owner=steve
+
+  handlers:
+    - name: reload sshd
+      action: service name=ssh state=reloaded
