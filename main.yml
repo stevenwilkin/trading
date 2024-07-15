@@ -34,6 +34,7 @@
         - ../fees/fees
         - ../premia/premia
         - ../swaps/swaps
+        - ../deribit-funding/deribit-funding
 
     - name: add .env
       copy: src=../carry/.env dest=/home/steve/.env owner=steve
