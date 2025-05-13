@@ -35,13 +35,13 @@
         - ../premia/premia
         - ../swaps/swaps
         - ../deribit-funding/deribit-funding
+        - ../treasury-cli/treasury-cli
 
     - name: add Rust binaries
       copy: src=../{{ item }}/target/release/{{ item }} dest=/home/steve/{{ item }} owner=steve mode='0700'
       loop:
         - bybit-basis
         - bybit-funding-cli
-        - treasury-cli
 
     - name: add .env
       copy: src=../carry/.env dest=/home/steve/.env owner=steve
