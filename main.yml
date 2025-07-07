@@ -31,6 +31,8 @@
         - ../carry/addresses
         - ../carry/buy
         - ../carry/sell
+        - ../carry/long
+        - ../carry/short
         - ../fees/fees
         - ../premia/premia
         - ../swaps/swaps
