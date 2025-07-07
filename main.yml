@@ -34,9 +34,8 @@
         - ../carry/long
         - ../carry/short
         - ../fees/fees
-        - ../premia/premia
+        - ../metrics/metrics
         - ../swaps/swaps
-        - ../deribit-funding/deribit-funding
         - ../treasury-cli/treasury-cli
 
     - name: add Rust binaries
