@@ -29,6 +29,7 @@
         - ../carry/carry
         - ../carry/positions
         - ../carry/addresses
+        - ../carry/wallet
         - ../carry/buy
         - ../carry/sell
         - ../carry/long
