@@ -23,6 +23,9 @@
     - name: add tmux configuration
       copy: src=.tmux.conf dest=/home/steve/.tmux.conf
 
+    - name: add tmux startup script
+      copy: src=trade.sh dest=/home/steve/trade.sh owner=steve mode='0700'
+
     - name: add binaries
       copy: src={{ item }} dest=/home/steve/{{ item | basename }} owner=steve mode='0700'
       loop:
