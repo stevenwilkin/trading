@@ -19,3 +19,9 @@ ansible-playbook -i <IP>, -u ubuntu --private-key <KEY> main.yml
 ```
 ansible-playbook -i <IP>, -u root --ask-pass main.yml
 ```
+
+## Automatically attach tmux session on login
+
+```
+alias trade='ssh -t trading ./trade.sh'
+```
